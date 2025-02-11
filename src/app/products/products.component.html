@@ -1,0 +1,9 @@
+
+<div  class="row" *ngIf="products.length>0; else noProducts">
+    <div class="col-md-3"  *ngFor="let product of products"> 
+            <app-product-details [product]="product"></app-product-details>    
+    </div>
+</div>
+<ng-template #noProducts>
+    <div class="alert alert-danger"> No product found!</div>
+</ng-template>
