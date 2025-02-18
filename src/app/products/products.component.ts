@@ -15,4 +15,8 @@ export class ProductsComponent implements OnInit {
      this.products=this.prodductService.getProducts();  
   }
 
+  onProductDeleted(id: number) {
+    this.products = this.products.filter(product => product.id !== id);
+  } 
+
 }
