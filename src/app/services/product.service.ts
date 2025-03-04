@@ -20,4 +20,11 @@ export class ProductService {
     }
   } 
 
+    //Méthode pour ajouter un nouveu produit
+    addProduct(product: Product) {
+      product.id = this.products[this.products.length - 1].id + 1;
+      this.products.push(product);
+    } 
+  
+
 }

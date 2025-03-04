@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../shared/product';
 import { ProductService } from '../services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +10,9 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductsComponent implements OnInit {
   products!:Product[];
-  constructor(private prodductService:ProductService){}
+  constructor(private prodductService:ProductService,
+              private router:Router
+  ){}
   
   ngOnInit(): void {
      this.products=this.prodductService.getProducts();  
@@ -18,5 +21,8 @@ export class ProductsComponent implements OnInit {
   onProductDeleted(id: number) {
     this.products = this.products.filter(product => product.id !== id);
   } 
+  onAddProduct(){
+    this.router.navigateByUrl("/products/edit")
+   }
 
 }
