@@ -10,6 +10,8 @@ import { SigninComponent } from './signin/signin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { FormsModule } from '@angular/forms';
+import { BaseURL } from './shared/baseUrl';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [  {provide:'BaseURL', useValue:BaseURL}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

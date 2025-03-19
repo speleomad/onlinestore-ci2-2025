@@ -10,7 +10,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},  
   {path:'products',canActivate:[authGuard], component:ProductsComponent},
-  {path:'products/edit',canActivate:[authGuard], component:EditProductComponent},
+  {path:'products/edit/:id',canActivate:[authGuard], component:EditProductComponent},
   {path:'signin',component:SigninComponent},
   {path:"**",component:NotFoundComponent}
 ];

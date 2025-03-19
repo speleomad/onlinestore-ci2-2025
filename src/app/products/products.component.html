@@ -1,16 +1,21 @@
-
 <div class="mt-2 mb-4">
     <button class="btn btn-success" (click)="onAddProduct()">
          Add Product
     </button>
 </div>
 <div  class="row" *ngIf="products.length>0; else noProducts">
-    <div class="col-md-3"  *ngFor="let product of products"> 
-            <app-product-details [product]="product" 
-                                 (productDeleted)="onProductDeleted($event)">
-            </app-product-details>    
+    <div class="col-md-3"  *ngFor="let product of products">
+            <app-product-details [product]="product" (productDeleted)="onProductDeleted($event)"></app-product-details>     
     </div>
 </div>
+<div [hidden]="!isWaiting" class="text-center">
+    <div class="spinner-border" role="status"></div>
+    <h4>Looding... Please Wait</h4>
+</div>
 <ng-template #noProducts>
-    <div class="alert alert-danger"> No product found!</div>
+    <!--  <p>No Contacts</p>-->
+    <p class="alert alert-warning mt-2" [hidden]="isWaiting">Sorry...No products available!</p>
+    <div *ngIf="errMess" class="alert alert-danger mt-2">
+        <strong>Error ! </strong> {{errMess}}.
+    </div>
 </ng-template>
